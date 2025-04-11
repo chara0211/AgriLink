@@ -39,4 +39,4 @@ Developed at **ENSAM Casablanca** in **January 2025**.
 
 Feel free to reach out for more info or collaboration ideas.
 
-- GitHub: [https://github.com/your-username](https://github.com/your-username)
+- GitHub: [https://github.com/chara0211](https://github.com/chara0211)
