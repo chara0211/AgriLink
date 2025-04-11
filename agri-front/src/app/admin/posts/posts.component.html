@@ -1,0 +1,66 @@
+
+<app-admin-sidebar></app-admin-sidebar>
+<p class="page-title">Manage Posts</p>
+
+<!-- Search Bar with Icon -->
+<div class="search-bar">
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    (input)="filterPosts()" 
+    placeholder="Search by user or title" 
+    class="search-input"
+  />
+</div>
+
+<div class="post-list-container">
+  <div *ngIf="filteredPosts.length === 0">No posts found.</div>
+  <div *ngFor="let post of filteredPosts" class="post-item">
+    <div class="user-profile-container">
+      <div class="user-profile">
+        <div class="profile-circle">
+          <img src="assets/OIP.jpeg" alt="User Profile">
+        </div>
+      </div>
+        <span class="user-name">{{ post.userName }}</span>
+   
+        <button class="delete-button" (click)="deletePost(post)">
+          <i class="fa fa-trash delete-icon"></i>
+        </button>
+    </div>
+
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+
+    <p><strong>Posted on :</strong> {{ post.createdAt }}</p>
+
+    <!-- Affichage de l'image du post -->
+    <img
+      *ngIf="post.image"
+      [src]="getImageUrl(post.image)"
+      alt="Image du post"
+      class="post-image"
+    />
+
+    <!-- Section des commentaires -->
+    <div class="comment-toggle" (click)="toggleComments(post)">
+      <i class="fa" [ngClass]="post.showComments ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      <span>{{ post.showComments ? 'Hide' : 'See' }} comments</span>
+    </div>
+
+    <!-- Commentaires (avec effet de dÃŠploiement) -->
+    <div *ngIf="post.showComments">
+      <div class="comment-list">
+        <div *ngFor="let comment of post.comments" class="comment-item">
+          <p><strong>{{ comment.userName }}:</strong> {{ comment.content }}</p>
+          <button class="delete-comment-btn" (click)="deleteComment(post, comment)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ajouter un commentaire -->
+      
+    </div>
+  </div>
+</div>

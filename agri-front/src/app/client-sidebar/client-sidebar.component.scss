@@ -1,0 +1,335 @@
+.header {
+  background-color: #2f7d32; /* Fond vert foncé */
+  padding: 10px 20px;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  display: flex;
+  justify-content: space-between; /* Sépare le logo et les liens */
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 50px; /* Ajustez la taille du logo */
+      height: auto;
+    }
+  }
+
+  .nav {
+    display: flex;
+
+    .nav-list {
+      display: flex;
+      gap: 40px; /* Espacement entre les liens */
+      list-style: none; /* Supprime les puces */
+      margin: 0;
+      padding: 0;
+
+      .nav-item {
+        text-decoration: none;
+        color: white;
+        font-weight: 400;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+        position: relative;
+
+        &:hover {
+          color: #d9b44a; /* Couleur jaune/or au survol */
+        }
+
+        &.active {
+          font-weight: 700;
+          color: #d9b44a;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #d9b44a;
+          }
+        }
+      }
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+
+    .profile-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%; /* Cercle parfait */
+      overflow: hidden;
+      border: 2px solid #d9b44a; /* Bordure jaune/or */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* L'image remplit le cercle */
+      }
+    }
+  }
+}
+
+ /* Container */
+.user-profile {
+position: relative;
+display: inline-block;
+}
+
+/* Profile Circle */
+.profile-circle {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+overflow: hidden;
+cursor: pointer;
+border: 2px solid #ddd;
+transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.profile-circle:hover {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transform: scale(1.1);
+}
+
+.profile-circle img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* User Info Popup */
+.user-info {
+position: absolute;
+top: 60px;
+right: 0;
+width: 250px;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-color: #d9b44a;
+z-index: 10;
+padding: 15px;
+text-align: center;
+
+}
+
+.user-info p {
+margin: 0;
+margin-bottom: 10px;
+font-size: 16px;
+color: #333;
+margin-top: 10px;
+gap: 10px; /* Espacement entre l'icône et le texte */
+
+}
+
+.user-info p:last-child {
+margin-bottom: 0;
+}
+.user-info i {
+color: #d9b44a; /* Couleur des icônes */
+font-size: 16px; /* Taille des icônes */
+margin-right: 8px;
+}
+
+.user-info strong {
+color: #d9b44a;
+font-weight: 600;
+}
+
+/* Optional: Add an animation for the dropdown */
+.user-info {
+animation: dropdown 0.3s ease-out;
+}
+
+@keyframes dropdown {
+from {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+.profile-circle-toggle {
+width: 70px;
+height: 70px;
+margin: 0 auto; /* Centrer horizontalement */
+border-radius: 50%;
+overflow: hidden;
+border: 2px solid #ddd;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.profile-circle-toggle img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Logout Button Style */
+.logout-button {
+margin-top: 15px;
+padding: 10px 20px;
+background-color: #ff4d4d; /* Rouge pour indiquer une action importante */
+color: #fff;
+border: none;
+border-radius: 5px;
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+background-color: #e63939; /* Plus foncé au survol */
+}
+
+.logout-button:active {
+background-color: #cc0000; /* Encore plus foncé lors du clic */
+}
+
+.logout-button i {
+font-size: 18px;
+color: #fffbfb;
+}
+
+.edit-profile-button i {
+font-size: 18px;
+color: #fffbfb;
+}
+
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+
+.modal-content {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+width: 400px;
+max-width: 90%;
+text-align: left;
+}
+
+.edit-profile-button{
+margin-top: 15px;
+padding: 10px 20px;
+background-color: #2f7d32; /* Rouge pour indiquer une action importante */
+color: #fff;
+border: none;
+border-radius: 5px;
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+background-color: #8ab835;
+}
+
+.save-button, .cancel-button {
+margin-top: 10px;
+padding: 8px 12px;
+border: none;
+cursor: pointer;
+}
+
+.save-button {
+background-color: #28a745;
+color: white;
+}
+
+.cancel-button {
+background-color: #dc3545;
+color: white;
+margin-left: 10px;
+}
+
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+
+.modal-content {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+width: 400px;
+max-width: 90%;
+}
+
+.modal-form {
+display: flex;
+flex-direction: column;
+}
+
+.form-group {
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input {
+width: 100%;
+padding: 8px;
+border-radius: 4px;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.modal-buttons {
+display: flex;
+justify-content: space-between;
+margin-top: 15px;
+}
+
+.save-button, .cancel-button {
+padding: 8px 12px;
+border: none;
+cursor: pointer;
+}
+
+.save-button {
+background-color: #28a745;
+color: white;
+}
+
+.cancel-button {
+background-color: #dc3545;
+color: white;
+}

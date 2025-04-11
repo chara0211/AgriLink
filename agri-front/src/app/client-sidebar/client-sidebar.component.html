@@ -1,0 +1,97 @@
+
+<header class="header">
+  <div class="logo">
+    <img src="assets/logo1.png" alt="Agrilink Logo">
+  </div>
+  <nav class="nav">
+      <ul class="nav-list">
+          <li>
+              <a 
+                [routerLink]="['/client/dashboard']" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{exact: true}" 
+                class="nav-item">
+                Dashboard
+              </a>
+          </li>
+          
+          <li>
+              <a 
+                [routerLink]="['/client/posts']" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{exact: true}" 
+                class="nav-item">
+                Posts
+              </a>
+          </li>
+          <li>
+            <a 
+              [routerLink]="['/client/cart']" 
+              routerLinkActive="active" 
+              [routerLinkActiveOptions]="{exact: true}" 
+              class="nav-item">
+              Panier
+            </a>
+        </li>
+        <li>
+          <a 
+            [routerLink]="['/client/notifications']" 
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{exact: true}" 
+            class="nav-item">
+            Notifications
+          </a>
+        </li>
+      </ul>
+  </nav>
+  <div class="user-profile">
+    <div class="profile-circle" (click)="toggleUserInfo()">
+      <img src="assets/OIP.jpeg" alt="User Profile">
+    </div>
+  
+    <div *ngIf="showUserInfo" class="user-info">
+      <div class="profile-circle-toggle">
+        <img src="assets/OIP.jpeg" alt="User Profile">
+      </div>
+      <p><i class="fas fa-user"></i> <strong>Name:</strong> {{ userName }}</p>
+      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> {{ userEmail }}</p>
+      
+      <button class="edit-profile-button" (click)="openEditProfileModal()">
+        <i class="fas fa-edit"></i> Edit Profile
+      </button>
+  
+      <button class="logout-button" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+  
+  <!-- Modal for Editing Profile -->
+  <!-- Modal for Editing Profile -->
+<div *ngIf="showEditProfileModal" class="modal-overlay" (click)="closeEditProfileModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Edit Profile</h2>
+    
+    <form (ngSubmit)="saveProfileChanges()" class="modal-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="userName">Name</label>
+        <input type="text" id="userName" [(ngModel)]="editableUserName" name="userName">
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" [(ngModel)]="editableUserEmail" name="userEmail">
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="modal-buttons">
+        <button type="submit" class="save-button">Save Changes</button>
+        <button type="button" class="cancel-button" (click)="closeEditProfileModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</header>
